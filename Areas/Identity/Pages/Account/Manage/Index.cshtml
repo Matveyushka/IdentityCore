@@ -1,0 +1,58 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h4>@ViewData["Title"]</h4>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+            <button id="become-admin-button" type="button" class="btn btn-primary">Become an admin</button>
+        </form>
+    </div>
+</div>
+<div id="become-admin-success" style="display: none">
+    <button id="become-admin-success-button">Ok</button>
+</div>
+<div id="become-admin-fail" style="display: none">
+    <button id="become-admin-fail-button">:(</button>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script type="text/javascript">
+        $('#become-admin-success-button').click(
+            () => $('#become-admin-success').css('display', 'none')
+        )
+        $('#become-admin-fail-button').click(
+            () => $('#become-admin-fail').css('display', 'none')
+        )
+        $('#become-admin-button').click(
+            () => {
+                $.ajax({ url: '/Identity/Account/Manage/Utils/BecomeAdmin', method: 'get' })
+                    .done(() => {
+                        console.log('AAAAAA')
+                        $('#become-admin-success').css('display', 'block')
+                    })
+                    .fail(() => {
+                        $('#become-admin-fail').css('display', 'block')
+                    })
+            }
+        )
+
+    </script>
+}

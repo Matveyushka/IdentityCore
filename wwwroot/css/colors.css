@@ -1,0 +1,106 @@
+:root {
+    --primary-background: #009688;
+    --primary: #009688;
+    --primary-dark: #00796B;
+    --primary-light: #B2DFDB;
+
+    --text-main: #212121;
+    --text-main-faded: #757575;
+    --text-contrast: #FFFFFF;
+    --text-contrast-faded: rgb(178, 223, 219);
+
+    --main-background: #FFFFFF;
+}
+
+html {
+    background: var(--main-background);
+    color: var(--text-main);
+}
+
+body {
+    background: var(--main-background);
+    color: var(--text-main);
+}
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-primary:active {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-primary:focus {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.navbar {
+    background: var(--primary-background);
+}
+
+.navbar-light .navbar-brand {
+    color: var(--text-contrast);
+}
+
+.navbar-light .navbar-brand:hover {
+    color: var(--text-contrast);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--text-contrast-faded);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: var(--text-contrast);
+}
+
+.nav-pills .nav-link.active {
+    background: var(--primary);
+    border-color: var(--primary)
+}
+
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+.footer {
+    background: var(--primary-light);
+}
+
+.navbar-light .navbar-toggler {
+    color: var(--text-contrast)
+}
+
+.inline-link {
+    --text-main-faded: #757575;
+}
+
+.inline-link:hover {
+    --text-main: #757575;
+}
+
+.inline-link:active {
+    --text-main: #757575;
+}

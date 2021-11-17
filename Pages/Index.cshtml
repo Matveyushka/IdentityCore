@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p>
+            <h1 class="display-4">Hello, user!</h1>
+            You are logged in as @User.Identity.Name. 
+        </p>
+
+    } else {
+        <h1 class="display-4">Hello there</h1>
+        <p>
+            And welcome! Here you can <a class="inline-link underline" asp-area="Identity" asp-page="/Account/Login">sign
+                in</a> or <a class="inline-link underline" asp-area="Identity" asp-page="/Account/Register">create</a> a new
+            account.
+        </p>
+    }
+
+</div>

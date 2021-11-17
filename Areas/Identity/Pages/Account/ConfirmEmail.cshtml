@@ -1,0 +1,9 @@
+@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirm email";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>@Model.StatusMessage</p>
+<a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Return to login page</a>

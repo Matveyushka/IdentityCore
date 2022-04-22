@@ -34,10 +34,10 @@ namespace IdentityCore
             System.Net.ServicePointManager.ServerCertificateValidationCallback +=
                 (sender, certificate, chain, sslPolicyErrors) => true;
 
-            var dbConnectionString = Configuration.GetConnectionString("DefaultConnection");
+            var dbConnectionString = Configuration.GetConnectionString("Database");
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(dbConnectionString));
+                options.UseSqlServer(dbConnectionString));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllers();
@@ -64,12 +64,12 @@ namespace IdentityCore
             services.AddIdentityServer()
                 .AddConfigurationStore(options =>
                 {
-                    options.ConfigureDbContext = b => b.UseSqlite(dbConnectionString,
+                    options.ConfigureDbContext = b => b.UseSqlServer(dbConnectionString,
                         sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddOperationalStore(options =>
                 {
-                    options.ConfigureDbContext = b => b.UseSqlite(dbConnectionString,
+                    options.ConfigureDbContext = b => b.UseSqlServer(dbConnectionString,
                         sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddDeveloperSigningCredential()

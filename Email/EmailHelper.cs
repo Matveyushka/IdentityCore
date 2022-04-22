@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -12,8 +10,8 @@ namespace IdentityCore.Email
     public class EmailHelper : IEmailSender
     {
         ILogger _logger;
-        string emailLogin = Startup.Configuration.GetValue<string>("emailLogin");
-        string emailPassword = Startup.Configuration.GetValue<string>("emailPassword");
+        string emailLogin = Startup.Configuration.GetValue<string>("EmailLogin");
+        string emailPassword = Startup.Configuration.GetValue<string>("EmailPassword");
 
         public EmailHelper(ILogger<EmailHelper> logger)
         {

@@ -10,8 +10,8 @@ namespace IdentityCore.Email
     public class EmailHelper : IEmailSender
     {
         ILogger _logger;
-        string emailLogin = Startup.Configuration.GetValue<string>("EmailLogin");
-        string emailPassword = Startup.Configuration.GetValue<string>("EmailPassword");
+        string emailLogin = Startup.Configuration.GetSection("SMTPConf").GetValue<string>("EmailLogin");
+        string emailPassword = Startup.Configuration.GetSection("SMTPConf").GetValue<string>("EmailPassword");
 
         public EmailHelper(ILogger<EmailHelper> logger)
         {
@@ -33,8 +33,8 @@ namespace IdentityCore.Email
             client.UseDefaultCredentials = false;
             client.Timeout = 10000;
             client.Credentials = new System.Net.NetworkCredential(emailLogin, emailPassword);
-            client.Host = "smtp.gmail.com";
-            client.Port = 587;
+            client.Host = Startup.Configuration.GetSection("SMTPConf").GetValue<string>("Host");
+            client.Port = Startup.Configuration.GetSection("SMTPConf").GetValue<int>("Port");
             try
             {
                 client.Send(mailMessage);
